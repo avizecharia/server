@@ -1,3 +1,4 @@
+import candidate from "../models/candidate";
 import Candidate from "../models/candidate";
 
 export const sidInitDatabase = async () => {
@@ -31,3 +32,14 @@ export const sidInitDatabase = async () => {
     );
   }
 };
+
+export const getCandidateList = async () => {
+    try {
+        const list = await Candidate.find()
+        return list
+    } catch (err) {
+        console.log(err);
+        throw err
+        
+    }
+}

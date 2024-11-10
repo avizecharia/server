@@ -7,7 +7,7 @@ import { LoginDto, RegisterDto } from "../types/dto/userDto";
 export const userLogin = async (user:LoginDto) => {
     try {
         const userFromDataBase = await User.findOne({username:user.username})
-        if(!userFromDataBase) throw new Error("user was not found")
+        if(!userFromDataBase){ throw new Error("user was not found")}
         const match = await compare(user.password,userFromDataBase.password)
         if(!match) throw new Error("wrong password")
         return userFromDataBase
@@ -18,6 +18,8 @@ export const userLogin = async (user:LoginDto) => {
 
 export const createNewUser = async(user:RegisterDto) => {
     try {
+        if(!user.password) throw new Error("Missing user data,[password] is require");
+        
         const encPass = await hash(user.password, 10)
         user.password = encPass
         const newUser = new User(user)
