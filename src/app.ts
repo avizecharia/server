@@ -1,5 +1,6 @@
 import express from "express"
 import "dotenv/config"
+import cors from "cors"
 import userController  from "./controllers/users"
 import adminController  from "./controllers/admin"
 import candidatesController  from "./controllers/candidates"
@@ -11,6 +12,11 @@ const app =express()
 connectToMongo()
 
 app.use(express.json())
+app.use({
+    
+})
+
+
 app.use("/api/users",userController)
 app.use("/api/admin",adminController)
 app.use("/api/votes",votesController)
