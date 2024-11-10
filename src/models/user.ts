@@ -16,6 +16,7 @@ const userSchema = new Schema<IUser>({
     password:String,
     isAdmin:{
         type:Boolean,
+        required:true,
         default:false
     }    ,
     hasVoted:{
