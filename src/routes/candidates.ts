@@ -14,7 +14,7 @@ export const sid = async (req:Request,res:Response) => {
 export const getList = async(req:Request,res:Response) => {
     try {
         const list = await getCandidateList()
-        res.status(200).json({list})
+        res.status(200).json(list)
     } catch (error) {
         res.status(400).json({error})
     }

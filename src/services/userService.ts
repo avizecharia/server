@@ -39,3 +39,16 @@ export const createNewUser = async (user: RegisterDto) => {
     throw new Error("can't create a new user");
   }
 };
+
+
+export const getUserService = async(userId: string)=>{
+  try {
+    const user = await User.findById(userId).lean()
+    if(!user)throw new Error ("user was not found")
+
+      
+      return user
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+}
